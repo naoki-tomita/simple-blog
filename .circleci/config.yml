@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  deploy:
     working_directory: ~/simple-blog
     docker:
       - image: circleci/node:lts
@@ -93,3 +93,7 @@ workflows:
     jobs:
       - test
       - e2e
+      - deploy
+        - requires:
+          - test
+          - e2e
