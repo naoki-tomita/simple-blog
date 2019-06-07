@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`It should render with no crashing. should be render. 1`] = `
+Array [
+  <h1>
+    title
+  </h1>,
+  <p>
+    body
+  </p>,
+]
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Editor should render successful. 1`] = `
+Array [
+  <input
+    className="title"
+    onChange={[Function]}
+    value=""
+  />,
+  <input
+    className="body"
+    onChange={[Function]}
+    value=""
+  />,
+  <button
+    className="send-button"
+    onClick={[Function]}
+  >
+    投稿する
+  </button>,
+]
+`;
