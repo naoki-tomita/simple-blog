@@ -5,4 +5,4 @@ jobs:
       - image: circleci/node:lts
     steps:
       - checkout
-      - command: cd app; yarn;
+      - run: cd app; yarn;
