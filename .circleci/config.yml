@@ -49,7 +49,7 @@ jobs:
   e2e:
     working_directory: ~/simple-blog
     docker:
-      - image: circleci/node:lts-node-browsers
+      - image: circleci/node:lts-browsers
     steps:
       - checkout
       - restore_cache:
