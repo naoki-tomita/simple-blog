@@ -2,21 +2,45 @@
 
 exports[`Editor should render successful. 1`] = `
 Array [
-  <input
-    className="title"
-    onChange={[Function]}
-    value=""
-  />,
-  <input
-    className="body"
-    onChange={[Function]}
-    value=""
-  />,
+  <div
+    className="cp_iptxt"
+  >
+    <input
+      className="ef"
+      onChange={[Function]}
+      placeholder=""
+      type="text"
+      value=""
+    />
+    <label>
+      タイトル
+    </label>
+    <span
+      className="focus_line"
+    />
+  </div>,
+  <div
+    className="cp_iptxtarea"
+  >
+    <textarea
+      className="ef"
+      onChange={[Function]}
+      rows={1}
+      type="text"
+      value=""
+    />
+    <label>
+      本文
+    </label>
+    <span
+      className="focus_line"
+    />
+  </div>,
   <button
-    className="send-button"
+    className="btn-sticky"
     onClick={[Function]}
   >
-    投稿する
+    送信
   </button>,
 ]
 `;
