@@ -49,7 +49,7 @@ jobs:
   e2e:
     working_directory: ~/simple-blog
     docker:
-      - image: circleci/node:jessie-browsers
+      - image: circleci/node:lts-node-browsers
     steps:
       - checkout
       - restore_cache:
@@ -81,7 +81,8 @@ jobs:
       - run:
           name: Start local server.
           working_directory: app
-          command: yarn e2e:start &
+          command: yarn e2e:start
+          background: true
       - run:
           name: Start test.
           working_directory: e2e
