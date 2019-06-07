@@ -89,9 +89,7 @@ jobs:
           command: yarn test
 workflows:
   version: 2
-  test:
+  deploy:
     jobs:
       - test
-  e2e:
-    jobs:
       - e2e
