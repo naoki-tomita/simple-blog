@@ -16,6 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "e2e:start": "REACT_APP_E2E=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

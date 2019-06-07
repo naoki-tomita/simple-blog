@@ -1,0 +1,13 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^6.1.1",
+    "firebase-admin": "^8.0.0"
+  },
+  "scripts": {
+    "clean": "node tools/delete-test-data.js"
+  }
+}

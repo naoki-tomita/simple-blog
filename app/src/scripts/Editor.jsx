@@ -4,6 +4,7 @@ import "../styles/Editor.css"
 import { Input } from "./Components/Input";
 import { TextArea } from "./Components/TextArea";
 import { Button } from "./Components/Button";
+import { ARTICLE_PATH } from "./Constants";
 const { useState } = React;
 
 export function Editor() {
@@ -20,7 +21,7 @@ export function Editor() {
 
   async function sendArticle() {
     const db = await firestore();
-    db.collection("articles").add({ title, body, createdAt: Date.now() });
+    db.collection(ARTICLE_PATH).add({ title, body, createdAt: Date.now() });
     setState({ title: "", body: "" });
   }
 

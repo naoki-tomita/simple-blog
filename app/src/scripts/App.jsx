@@ -3,6 +3,7 @@ import '../styles/App.css';
 import { firestore } from "firebase";
 import { Article } from './Article';
 import { Editor } from './Editor';
+import { ARTICLE_PATH } from './Constants';
 const { useState, useEffect } = React;
 
 export function App() {
@@ -11,7 +12,7 @@ export function App() {
 
   async function fetchArticles() {
     const db = await firestore();
-    db.collection("articles")
+    db.collection(ARTICLE_PATH)
       .orderBy("createdAt", "desc")
       .onSnapshot(snapshot => {
         const articles = [];

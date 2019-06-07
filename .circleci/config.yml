@@ -6,37 +6,42 @@ version: 2
 jobs:
   build:
     docker:
-      # specify the version you desire here
       - image: circleci/node:lts
-
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
-
     working_directory: ~/simple-blog
-
     steps:
       - checkout
-
-      # Download and cache dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "app/package.json" }}
-            # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
           working_directory: app
-
       - run:
+          name: Install dependency.
           command: yarn install
           working_directory: app
-
       - save_cache:
           paths:
             - app/node_modules
           key: v1-dependencies-{{ checksum "app/package.json" }}
-
-      # run tests!
       - run:
+          name: Run test.
           command: yarn test
           working_directory: app
+  e2e:
+    working_directory: ~/simple-blog
+    docker:
+      - image: circleci/node:jessie-browsers
+    steps:
+      - checkout
+      - run:
+          name: Delete test data.
+          working_directory: e2e
+          command: yarn clean
+      - run:
+          name: Start local server.
+          working_directory: app
+          command: yarn start &
+      - run:
+          name: Start test.
+          working_directory: e2e
+          command: yarn test
