@@ -22,21 +22,21 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-{{ checksum "app/package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
-          working_directory: ~/simple-blog/app
+          working_directory: app
 
       - run:
           command: yarn install
-          working_directory: ~/simple-blog/app
+          working_directory: app
 
       - save_cache:
           paths:
-            - ~/simple-blog/app/node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
+            - app/node_modules
+          key: v1-dependencies-{{ checksum "app/package.json" }}
 
       # run tests!
       - run:
           command: yarn test
-          working_directory: ~/simple-blog/app
+          working_directory: app
