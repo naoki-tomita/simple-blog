@@ -1,5 +1,7 @@
 # simple-blog
 
+[![CircleCI](https://circleci.com/gh/naoki-tomita/simple-blog/tree/master.svg?style=svg)](https://circleci.com/gh/naoki-tomita/simple-blog/tree/master)
+
 * a blog application.
   * used `firebase` for database.
   * used `create-react-app` for initialize application.
