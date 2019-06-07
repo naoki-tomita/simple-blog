@@ -94,6 +94,6 @@ workflows:
       - test
       - e2e
       - deploy
-        - requires:
+        requires:
           - test
           - e2e
