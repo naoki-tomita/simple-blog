@@ -14,7 +14,7 @@ jobs:
       # documented at https://circleci.com/docs/2.0/circleci-images/
       # - image: circleci/mongo:3.4.4
 
-    working_directory: app
+    working_directory: ~/simple-blog
 
     steps:
       - checkout
@@ -25,13 +25,19 @@ jobs:
             - v1-dependencies-{{ checksum "package.json" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
+          working_directory: ~/simple-blog/app
 
-      - run: yarn install
+      - run:
+          command: yarn install
+          working_directory: ~/simple-blog/app
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+          working_directory: ~/simple-blog/app
 
       # run tests!
-      - run: yarn test
+      - run:
+          command: yarn test
+          working_directory: ~/simple-blog/app
