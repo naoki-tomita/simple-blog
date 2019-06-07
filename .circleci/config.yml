@@ -1,13 +1,9 @@
-# Javascript Node CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-javascript/ for more details
-#
 version: 2
 jobs:
-  build:
+  test:
+    working_directory: ~/simple-blog
     docker:
       - image: circleci/node:lts
-    working_directory: ~/simple-blog
     steps:
       - checkout
       - restore_cache:
@@ -45,3 +41,11 @@ jobs:
           name: Start test.
           working_directory: e2e
           command: yarn test
+workflows:
+  version: 2
+  test:
+    jobs:
+      - build
+  e2e:
+    jobs:
+      - e2e
