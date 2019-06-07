@@ -33,9 +33,8 @@ jobs:
 
       - save_cache:
           paths:
-            - node_modules
+            - ~/simple-blog/app/node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-          working_directory: ~/simple-blog/app
 
       # run tests!
       - run:
