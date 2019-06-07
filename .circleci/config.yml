@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  test:
+  build:
     working_directory: ~/simple-blog
     docker:
       - image: circleci/node:lts
@@ -8,8 +8,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "app/package.json" }}
-            - v1-dependencies-
+            - app-dependencies-{{ checksum "app/package.json" }}
+            - app-dependencies-
           working_directory: app
       - run:
           name: Install dependency.
@@ -18,7 +18,30 @@ jobs:
       - save_cache:
           paths:
             - app/node_modules
-          key: v1-dependencies-{{ checksum "app/package.json" }}
+          key: app-dependencies-{{ checksum "app/package.json" }}
+      - run:
+          name: Run test.
+          command: yarn build
+          working_directory: app
+  test:
+    working_directory: ~/simple-blog
+    docker:
+      - image: circleci/node:lts
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - app-dependencies-{{ checksum "app/package.json" }}
+            - app-dependencies-
+          working_directory: app
+      - run:
+          name: Install dependency.
+          command: yarn install
+          working_directory: app
+      - save_cache:
+          paths:
+            - app/node_modules
+          key: app-dependencies-{{ checksum "app/package.json" }}
       - run:
           name: Run test.
           command: yarn test
@@ -29,6 +52,32 @@ jobs:
       - image: circleci/node:jessie-browsers
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - app-dependencies-{{ checksum "app/package.json" }}
+            - app-dependencies-
+          working_directory: app
+      - restore_cache:
+          keys:
+            - e2e-dependencies-{{ checksum "app/package.json" }}
+            - e2e-dependencies-
+          working_directory: e2e
+      - run:
+          name: Install app dependency.
+          command: yarn install
+          working_directory: app
+      - run:
+          name: Install e2e dependency.
+          command: yarn install
+          working_directory: e2e
+      - save_cache:
+          paths:
+            - app/node_modules
+          key: app-dependencies-{{ checksum "app/package.json" }}
+      - save_cache:
+          paths:
+            - e2e/node_modules
+          key: e2e-dependencies-{{ checksum "app/package.json" }}
       - run:
           name: Delete test data.
           working_directory: e2e
@@ -45,7 +94,7 @@ workflows:
   version: 2
   test:
     jobs:
-      - build
+      - test
   e2e:
     jobs:
       - e2e
