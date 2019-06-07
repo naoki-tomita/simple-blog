@@ -79,13 +79,9 @@ jobs:
             - e2e/node_modules
           key: e2e-dependencies-{{ checksum "app/package.json" }}
       - run:
-          name: Delete test data.
-          working_directory: e2e
-          command: yarn clean
-      - run:
           name: Start local server.
           working_directory: app
-          command: yarn start &
+          command: yarn e2e:start &
       - run:
           name: Start test.
           working_directory: e2e

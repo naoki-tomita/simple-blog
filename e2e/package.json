@@ -4,10 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "firebase": "^6.1.1",
-    "firebase-admin": "^8.0.0"
+    "firebase-admin": "^8.0.0",
+    "protractor": "^5.4.2"
   },
   "scripts": {
-    "clean": "node tools/delete-test-data.js"
+    "pretest": "webdriver-manager clean && webdriver-manager update",
+    "test": "protractor"
   }
 }

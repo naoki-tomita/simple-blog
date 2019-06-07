@@ -1,9 +1,9 @@
 const admin = require("firebase-admin");
 const serviceAccount = process.env.SERVICE_ACCOUNT
   ? JSON.parse(process.env.SERVICE_ACCOUNT)
-  : require("./credential.json");
+  : require("../credential.json");
 
-async function main() {
+async function cleanTestData() {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://simple-blog-ef2c7.firebaseio.com"
@@ -19,4 +19,4 @@ async function main() {
   await batch.commit();
 }
 
-main();
+exports.cleanTestData = cleanTestData;
