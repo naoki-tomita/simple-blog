@@ -16,6 +16,7 @@ describe("Register", () => {
   });
 
   async function registerArticle(title, body) {
+    await app.editor().open();
     await app.editor().title().sendKeys(title);
     await app.editor().body().sendKeys(body);
     await app.editor().send().click();

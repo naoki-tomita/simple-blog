@@ -10,58 +10,98 @@ Array [
     >
       Simple blog
     </h1>
+    <button
+      className="btn-sticky"
+      onClick={[Function]}
+    >
+      記事を書く
+    </button>
   </div>,
   <div
     className="container"
+  />,
+  <div
+    style={
+      Object {
+        "display": "none",
+      }
+    }
   >
     <div
-      className="cp_iptxt"
+      className="dialog-container"
     >
-      <input
-        className="ef"
-        onChange={[Function]}
-        placeholder=""
-        type="text"
-        value=""
-      />
-      <label>
-        タイトル
-      </label>
-      <span
-        className="focus_line"
-      />
-    </div>
-    <div
-      className="cp_iptxtarea"
-    >
-      <textarea
-        className="ef"
-        onChange={[Function]}
-        rows={1}
-        type="text"
-        value=""
-      />
-      <label>
-        本文
-      </label>
-      <span
-        className="focus_line_t"
-      />
-    </div>
-    <div
-      style={
-        Object {
-          "textAlign": "right",
-        }
-      }
-    >
-      <button
-        className="btn-sticky"
-        onClick={[Function]}
+      <div
+        className="dialog-title"
       >
-        送信
-      </button>
+        記事を書く
+      </div>
+      <div
+        className="dialog-content"
+      >
+        <div
+          className="cp_iptxt"
+        >
+          <input
+            className="ef"
+            onChange={[Function]}
+            placeholder=""
+            type="text"
+            value=""
+          />
+          <label>
+            タイトル
+          </label>
+          <span
+            className="focus_line"
+          />
+        </div>
+        <div
+          className="cp_iptxtarea"
+        >
+          <textarea
+            className="ef"
+            onChange={[Function]}
+            rows={1}
+            type="text"
+            value=""
+          />
+          <label>
+            本文
+          </label>
+          <span
+            className="focus_line_t"
+          />
+        </div>
+        <div
+          className="dialog-footer"
+        >
+          <button
+            className="btn-sticky"
+            onClick={[Function]}
+          >
+            投稿する
+          </button>
+          <span
+            style={
+              Object {
+                "display": "inline-block",
+                "width": "12px",
+              }
+            }
+          />
+          <button
+            className="btn-sticky"
+            onClick={[Function]}
+          >
+            閉じる
+          </button>
+        </div>
+      </div>
     </div>
+    <div
+      className="dialog-backdrop"
+      onClick={[Function]}
+    />
   </div>,
 ]
 `;

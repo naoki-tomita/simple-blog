@@ -9,5 +9,10 @@ exports[`Editor should render successful. 1`] = `
   >
     Simple blog
   </h1>
+  <button
+    className="btn-sticky"
+  >
+    記事を書く
+  </button>
 </div>
 `;

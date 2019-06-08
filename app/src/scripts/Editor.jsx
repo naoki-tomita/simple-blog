@@ -3,11 +3,11 @@ import { firestore } from "firebase";
 import "../styles/Editor.css"
 import { Input } from "./Components/Input";
 import { TextArea } from "./Components/TextArea";
-import { Button } from "./Components/Button";
 import { ARTICLE_PATH } from "./Constants";
+import { Dialog } from "./Components/Dialog";
 const { useState } = React;
 
-export function Editor() {
+export function Editor({ isOpen, onClose }) {
   const [state, setState] = useState({ title: "", body: "" });
   const { title, body } = state;
 
@@ -27,10 +27,10 @@ export function Editor() {
   }
 
   return (
-    <>
-    <Input placeholder="タイトル" value={title} onChange={onTitleChange} />
-    <TextArea placeholder="本文" rows={body.split("\n").length} value={body} onChange={onBodyChange} />
-    <div style={{ textAlign: "right" }}><Button onClick={sendArticle}>投稿する</Button></div>
-    </>
+    // eslint-disable-next-line
+    <Dialog isOpen={isOpen} title="記事を書く" okButtonLabel="投稿する" onOk={() => ((onClose && onClose()),sendArticle())} onCancel={onClose}>
+      <Input placeholder="タイトル" value={title} onChange={onTitleChange} />
+      <TextArea placeholder="本文" rows={body.split("\n").length} value={body} onChange={onBodyChange} />
+    </Dialog>
   )
 }

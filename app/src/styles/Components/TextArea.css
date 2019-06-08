@@ -9,7 +9,8 @@
 	width: 100%;
 	letter-spacing: 1px;
   padding-left: 5em;
-  transition: 0.2s padding-left;
+	transition: 0.2s padding-left;
+	resize: none;
 }
 .cp_iptxtarea textarea:focus {
   outline: none;
@@ -27,7 +28,7 @@
 	left: 0;
 	width: 0;
 	height: 2px;
-	transition: 0.4s;
+	transition: 0.4s width;
 	background-color: #da3c41;
 }
 .ef:focus ~ .focus_line_t,
@@ -41,13 +42,12 @@
 	top: 4px;
 	left: 0;
 	width: 100%;
-	transition: 0.3s;
+	transition: 0.3s top font-size color;
 	letter-spacing: 0.5px;
 	color: #aaaaaa;
 }
 .ef:focus ~ label, .cp_iptxtarea.ef ~ label {
 	font-size: 12px;
 	top: -16px;
-	transition: 0.3s;
 	color: #da3c41;
 }

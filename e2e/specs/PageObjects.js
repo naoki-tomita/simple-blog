@@ -1,32 +1,54 @@
 const { $, $$, browser } = require("protractor");
 
 class TitleInput {
+  get element() {
+    return $(".dialog-content input");
+  }
+
   async sendKeys(text) {
-    await $("input").sendKeys(text);
+    await this.element.sendKeys(text);
   }
 
   async value() {
-    return await $("input").getAttribute("value")
+    return await this.element.getAttribute("value")
   }
 }
 
 class BodyInput {
+  get element() {
+    return $(".dialog-content textarea");
+  }
+
   async sendKeys(text) {
-    await $("textarea").sendKeys(text);
+    await this.element.sendKeys(text);
   }
 
   async value() {
-    return await $("textarea").getAttribute("value");
+    return await this.element.getAttribute("value");
   }
 }
 
 class SendButton {
+  get element() {
+    return $(".dialog-content button");
+  }
+
   async click() {
-    await $("button").click();
+    await this.element.click();
+  }
+}
+
+class Header {
+  openEditorButton() {
+    return $(".header button");
   }
 }
 
 class Editor {
+  async open() {
+    await new Header().openEditorButton().click();
+  }
+
   title() {
     return new TitleInput();
   }

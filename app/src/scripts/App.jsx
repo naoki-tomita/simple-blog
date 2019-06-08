@@ -8,7 +8,8 @@ import { Header } from './Header';
 const { useState, useEffect } = React;
 
 export function App() {
-  const [state, setState] = useState({ articles: [] });
+  const [state, setState] = useState({ articles: [], isEditorOpen: false });
+  const [isEditorOpen, setIsEditorOpen] = useState(false);
   const { articles } = state;
 
   async function fetchArticles() {
@@ -16,10 +17,18 @@ export function App() {
     db.collection(ARTICLE_PATH)
       .orderBy("createdAt", "desc")
       .onSnapshot(snapshot => {
-        const articles = [];
-        snapshot.forEach(it => articles.push({ id: it.id, ...it.data() }));
-        setState({ ...state, articles });
+        const fetchedArticles = [];
+        snapshot.forEach(it => fetchedArticles.push({ id: it.id, ...it.data() }));
+        setState({ ...state, articles: fetchedArticles });
       });
+  }
+
+  function openEditor() {
+    setIsEditorOpen(true);
+  }
+
+  function closeEditor() {
+    setIsEditorOpen(false);
   }
 
   useEffect(() => {
@@ -29,11 +38,11 @@ export function App() {
 
   return (
     <>
-    <Header />
+    <Header onEditorOpen={openEditor} />
     <div className="container">
       {articles.map(it => <Article key={it.id} title={it.title} body={it.body} />)}
-      <Editor />
     </div>
+    <Editor isOpen={isEditorOpen} onClose={closeEditor} />
     </>
   );
 }

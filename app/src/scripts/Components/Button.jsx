@@ -1,8 +1,8 @@
 import React from "react";
 import "../../styles/Components/Button.css"
 
-export function Button({ onClick }) {
+export function Button({ onClick, children }) {
   return (
-    <button className="btn-sticky" onClick={onClick}>送信</button>
+    <button className="btn-sticky" onClick={onClick}>{children}</button>
   );
 }
