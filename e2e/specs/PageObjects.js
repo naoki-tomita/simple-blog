@@ -52,7 +52,7 @@ class Title {
   }
 
   async text() {
-    return await this.element.$("h1").getText();
+    return await this.element.$("h2").getText();
   }
 }
 
@@ -62,7 +62,7 @@ class Body {
   }
 
   async text() {
-    return await this.element.$("p").getText();
+    return await this.element.$("div.body").getText();
   }
 }
 

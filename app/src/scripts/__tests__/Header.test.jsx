@@ -1,11 +1,11 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { App } from '../App';
+import { Header } from '../Header';
 
-describe("App", () => {
-  it('renders without crashing', () => {
+describe("Editor", () => {
+  it("should render successful.", () => {
     expect(renderer.create(
-      <App />
+      <Header />
     )).toMatchSnapshot();
   });
-});
+})

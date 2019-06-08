@@ -1,0 +1,13 @@
+.header {
+  max-width: 920px;
+  margin: auto;
+  padding: 24px 0;
+}
+
+.title {
+  display: inline;
+  padding: 8px;
+  border: solid 1px #ccc;
+  box-shadow: 0 4px 4px #ddd;
+  border-radius: 16px;
+}

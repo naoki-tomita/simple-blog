@@ -4,8 +4,8 @@ import "../styles/Article.css"
 export function Article({ title, body }) {
   return (
     <div className="article">
-      <h1>{title}</h1>
-      <p ref={p => (p && (p.innerHTML = body.replace(/\n/g, "<br>")))}>{body}</p>
+      <h2>{title}</h2>
+      <div className="body" ref={p => (p && (p.innerHTML = body.replace(/\n/g, "<br>")))}>{body}</div>
     </div>
   )
 }

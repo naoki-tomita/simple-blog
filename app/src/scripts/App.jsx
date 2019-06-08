@@ -4,6 +4,7 @@ import { firestore } from "firebase";
 import { Article } from './Article';
 import { Editor } from './Editor';
 import { ARTICLE_PATH } from './Constants';
+import { Header } from './Header';
 const { useState, useEffect } = React;
 
 export function App() {
@@ -27,9 +28,12 @@ export function App() {
   }, []);
 
   return (
-    <div>
-      <Editor />
+    <>
+    <Header />
+    <div className="container">
       {articles.map(it => <Article key={it.id} title={it.title} body={it.body} />)}
+      <Editor />
     </div>
+    </>
   );
 }

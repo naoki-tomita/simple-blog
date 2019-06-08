@@ -20,6 +20,7 @@ export function Editor() {
   }
 
   async function sendArticle() {
+    if (!title && !body) return;
     const db = await firestore();
     db.collection(ARTICLE_PATH).add({ title, body, createdAt: Date.now() });
     setState({ title: "", body: "" });
@@ -29,7 +30,7 @@ export function Editor() {
     <>
     <Input placeholder="タイトル" value={title} onChange={onTitleChange} />
     <TextArea placeholder="本文" rows={body.split("\n").length} value={body} onChange={onBodyChange} />
-    <Button onClick={sendArticle}>投稿する</Button>
+    <div style={{ textAlign: "right" }}><Button onClick={sendArticle}>投稿する</Button></div>
     </>
   )
 }

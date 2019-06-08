@@ -33,14 +33,22 @@ Array [
       本文
     </label>
     <span
-      className="focus_line"
+      className="focus_line_t"
     />
   </div>,
-  <button
-    className="btn-sticky"
-    onClick={[Function]}
+  <div
+    style={
+      Object {
+        "textAlign": "right",
+      }
+    }
   >
-    送信
-  </button>,
+    <button
+      className="btn-sticky"
+      onClick={[Function]}
+    >
+      送信
+    </button>
+  </div>,
 ]
 `;

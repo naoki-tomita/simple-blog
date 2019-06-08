@@ -1,7 +1,7 @@
 .cp_iptxtarea {
 	position: relative;
-	width: 80%;
-	margin: 40px 3%;
+	width: 100%;
+	margin-top: 40px;
 }
 .cp_iptxtarea textarea {
 	font: 15px/24px sans-serif;
@@ -21,17 +21,17 @@
 	border-bottom: 1px solid #1b2538;
 	background-color: transparent;
 }
-.ef ~ .focus_line {
+.ef ~ .focus_line_t {
 	position: absolute;
-	bottom: 0;
+	bottom: 2px;
 	left: 0;
 	width: 0;
 	height: 2px;
 	transition: 0.4s;
 	background-color: #da3c41;
 }
-.ef:focus ~ .focus_line,
-.cp_iptxtarea.ef ~ .focus_line {
+.ef:focus ~ .focus_line_t,
+.cp_iptxtarea.ef ~ .focus_line_t {
 	width: 100%;
 	transition: 0.4s;
 }

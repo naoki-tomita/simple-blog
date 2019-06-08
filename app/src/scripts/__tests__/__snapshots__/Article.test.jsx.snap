@@ -4,11 +4,13 @@ exports[`It should render with no crashing. should be render. 1`] = `
 <div
   className="article"
 >
-  <h1>
+  <h2>
     title
-  </h1>
-  <p>
+  </h2>
+  <div
+    className="body"
+  >
     body
-  </p>
+  </div>
 </div>
 `;

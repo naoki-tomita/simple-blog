@@ -92,7 +92,7 @@ jobs:
       - run:
           name: Start test.
           working_directory: e2e
-          command: yarn test
+          command: yarn initialize; yarn test
 workflows:
   version: 2
   deploy:

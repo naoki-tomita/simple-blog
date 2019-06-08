@@ -6,7 +6,7 @@ export function TextArea({ placeholder, rows, value, onChange }) {
     <div className="cp_iptxtarea">
       <textarea rows={rows} className="ef" type="text" value={value} onChange={onChange} />
       <label>{placeholder}</label>
-      <span className="focus_line"></span>
+      <span className="focus_line_t"></span>
     </div>
   );
 }

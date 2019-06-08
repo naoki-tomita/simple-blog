@@ -7,22 +7,39 @@ async function sleep(ms) {
 }
 
 describe("Register", () => {
+  const app = new App;
   beforeEach(async () => {
     browser.ignoreSynchronization = true;
     await cleanTestData();
-  });
-  it("should register articles.", async () => {
-    const app = await new App;
     await app.visit();
-    await app.editor().title().sendKeys("foo");
-    await app.editor().body().sendKeys("bar\nbar");
+  });
+
+  async function registerArticle(title, body) {
+    await app.editor().title().sendKeys(title);
+    await app.editor().body().sendKeys(body);
+    await app.editor().send().click();
+  }
+
+  it("should register articles.", async () => {
     expect((await app.articles().list()).length).toBe(0);
 
-    await app.editor().send().click();
+    await registerArticle("title1", "body2");
 
     const articles = await app.articles().list();
     expect(articles.length).toBe(1);
-    expect(await articles[0].title().text()).toBe("foo");
-    expect(await articles[0].body().text()).toBe("bar\nbar");
+    expect(await articles[0].title().text()).toBe("title1");
+    expect(await articles[0].body().text()).toBe("body2");
+  });
+
+  it("should show multi articles. newer articles are displayed above.", async () => {
+    await registerArticle("title1", "body1");
+    await registerArticle("title2", "body2");
+
+    const articles = await app.articles().list();
+    expect(articles.length).toBe(2);
+    expect(await articles[0].title().text()).toBe("title2");
+    expect(await articles[0].body().text()).toBe("body2");
+    expect(await articles[1].title().text()).toBe("title1");
+    expect(await articles[1].body().text()).toBe("body1");
   });
 });
