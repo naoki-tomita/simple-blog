@@ -23,6 +23,7 @@ export function App() {
 
   useEffect(() => {
     fetchArticles();
+    // eslint-disable-next-line
   }, []);
 
   return (
