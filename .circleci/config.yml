@@ -93,6 +93,8 @@ jobs:
           name: Start test.
           working_directory: e2e
           command: yarn initialize; yarn test
+      - store_artifacts:
+          path: e2e/screenshot
 workflows:
   version: 2
   deploy:

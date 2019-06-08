@@ -1,9 +1,41 @@
+const { writeFile, mkdir } = require("fs");
 const { browser } = require("protractor");
 const { cleanTestData } = require("./Delete");
 const { App } = require("./PageObjects");
 
 async function sleep(ms) {
   return new Promise(ok => setTimeout(ok, ms));
+}
+
+async function mkdirSync(path) {
+  return new Promise(ok => mkdir(path, () => ok()));
+}
+
+async function writeFileAsync(fileName, data) {
+  return new Promise(ok => {
+    writeFile(fileName, data, (error) => (error && console.log(error), ok()));
+  });
+}
+
+async function takeScreenshot() {
+  const file = await browser.takeScreenshot();
+  const fileName = `./screenshot/error_${Date.now()}.png`;
+  await mkdirSync("screenshot");
+  await writeFileAsync(fileName, Buffer.from(file, "base64"));
+  console.log(`Save screenshot on ${fileName}`);
+}
+
+const _it = global.it;
+
+const it = (text, cb) => {
+  _it(text, async () => {
+    try {
+      await cb();
+    } catch (e) {
+      takeScreenshot();
+      throw e;
+    }
+  });
 }
 
 describe("Register", () => {
