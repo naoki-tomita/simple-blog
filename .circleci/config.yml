@@ -20,7 +20,7 @@ jobs:
             - app/node_modules
           key: app-dependencies-{{ checksum "app/package.json" }}
       - run:
-          name: Run test.
+          name: Build public.
           command: yarn build
           working_directory: app
       - run:
@@ -28,7 +28,7 @@ jobs:
           command: yarn add firebase-tools
       - run:
           name: Deploy to firebase-hosting.
-          command: yarn firebase deploy --token "$FIREBASE_TOKEN"
+          command: yarn use public; yarn firebase deploy --token "$FIREBASE_TOKEN"
   test:
     working_directory: ~/simple-blog
     docker:
