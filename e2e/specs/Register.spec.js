@@ -9,6 +9,7 @@ async function sleep(ms) {
 describe("Register", () => {
   const app = new App;
   beforeEach(async () => {
+    sleep(500);
     browser.ignoreSynchronization = true;
     await cleanTestData();
     await app.visit();

@@ -9,6 +9,7 @@ admin.initializeApp({
 });
 
 async function cleanTestData() {
+  console.log("Starting clean test data.");
   const db = admin.firestore();
   const snapshot = await db.collection("e2e-articles").get();
   const batch = db.batch();
