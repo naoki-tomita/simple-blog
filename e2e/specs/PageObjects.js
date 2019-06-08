@@ -30,7 +30,7 @@ class BodyInput {
 
 class SendButton {
   get element() {
-    return $$(".dialog-content buttons").get(0);
+    return $$(".dialog-content button").get(0);
   }
 
   async click() {
