@@ -18,6 +18,9 @@ async function cleanTestData() {
     console.log(it.data());
   });
   await batch.commit();
+  if ((await db.collection("e2e-articles").get()).size !== 0) {
+    await cleanTestData();
+  }
 }
 
 exports.cleanTestData = cleanTestData;
