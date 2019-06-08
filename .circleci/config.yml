@@ -28,7 +28,7 @@ jobs:
           command: yarn add firebase-tools
       - run:
           name: Deploy to firebase-hosting.
-          command: yarn firebase use public --token "$FIREBASE_TOKEN"; yarn firebase deploy --token "$FIREBASE_TOKEN"
+          command: yarn firebase deploy --token "$FIREBASE_TOKEN"
   test:
     working_directory: ~/simple-blog
     docker:
