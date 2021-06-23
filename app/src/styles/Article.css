@@ -3,11 +3,11 @@ h2 {
 }
 
 .body {
-  box-shadow: 0 4px 4px #eee;
+  box-shadow: 0 4px 4px #ccc;
   margin-bottom: 16px;
   border-radius: 12px;
   min-height: 3em;
-  padding: 12px 0;
+  padding: 12px 18px;
 }
 
 .body::first-letter {
