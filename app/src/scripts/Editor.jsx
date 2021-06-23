@@ -1,10 +1,11 @@
 import React from "react";
-import { firestore } from "firebase";
+import firebase from "firebase";
 import "../styles/Editor.css"
 import { Input } from "./Components/Input";
 import { TextArea } from "./Components/TextArea";
 import { ARTICLE_PATH } from "./Constants";
 import { Dialog } from "./Components/Dialog";
+const { firestore } = firebase;
 const { useState } = React;
 
 export function Editor({ isOpen, onClose }) {

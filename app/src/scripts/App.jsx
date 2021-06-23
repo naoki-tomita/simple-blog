@@ -1,10 +1,11 @@
 import React from 'react';
 import '../styles/App.css';
-import { firestore } from "firebase";
+import firebase from "firebase";
 import { Article } from './Article';
 import { Editor } from './Editor';
 import { ARTICLE_PATH } from './Constants';
 import { Header } from './Header';
+const { firestore } = firebase;
 const { useState, useEffect } = React;
 
 export function App() {
