@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "firebase-admin": "^8.0.0",
-    "protractor": "^5.4.2"
+    "firebase-admin": "^9.9.0",
+    "protractor": "^7.0.0"
   },
   "scripts": {
     "initialize": "webdriver-manager clean && webdriver-manager update",
